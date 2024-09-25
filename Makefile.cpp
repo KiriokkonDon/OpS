@@ -1,7 +1,5 @@
-#Сборка проекта
 all: main.exe
 
-#Правило для сборки исполняемого файла
 main.exe: myfunc.o main.o
 	g++ myfunc.o main.o -o main.exe
 
