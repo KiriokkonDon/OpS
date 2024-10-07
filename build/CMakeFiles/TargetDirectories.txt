@@ -1,0 +1,3 @@
+C:/Users/Incognitus/OpS/HelloWorld/build/CMakeFiles/main.dir
+C:/Users/Incognitus/OpS/HelloWorld/build/CMakeFiles/edit_cache.dir
+C:/Users/Incognitus/OpS/HelloWorld/build/CMakeFiles/rebuild_cache.dir
