@@ -1,30 +1,20 @@
 @echo off
-
-for /f "tokens=*" %%i in ('git symbolic-ref --short HEAD') do set current_branch=%%i
-
-git pull origin %current_branch% --rebase
-
-IF %ERRORLEVEL% NEQ 0 (
-    echo Ошибка при выполнении git pull.
+git pull origin main
+if errorlevel 1 (
+    echo Error updates.
     exit /b 1
 )
-
-if not exist build mkdir build
+mkdir build 2>nul
 cd build
-
 cmake .. -G "MinGW Makefiles"
-
-IF %ERRORLEVEL% NEQ 0 (
-    echo Ошибка при конфигурации CMake.
+if errorlevel 1 (
+    echo Error CMake.
     exit /b 1
 )
-
-cmake --build .
-
-IF %ERRORLEVEL% NEQ 0 (
-    echo Ошибка сборки.
+mingw32-make
+if errorlevel 1 (
+    echo Error.
     exit /b 1
 )
-
-echo Сборка завершена успешно!
-cd ..
+echo Successfully.
+main.exe
