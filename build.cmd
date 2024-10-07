@@ -2,8 +2,6 @@
 
 for /f "tokens=*" %%i in ('git symbolic-ref --short HEAD') do set current_branch=%%i
 
-echo Текущая ветка: %current_branch%
-
 git pull origin %current_branch% --rebase
 
 IF %ERRORLEVEL% NEQ 0 (
@@ -14,7 +12,7 @@ IF %ERRORLEVEL% NEQ 0 (
 if not exist build mkdir build
 cd build
 
-cmake ..
+cmake .. -G "MinGW Makefiles"
 
 IF %ERRORLEVEL% NEQ 0 (
     echo Ошибка при конфигурации CMake.
